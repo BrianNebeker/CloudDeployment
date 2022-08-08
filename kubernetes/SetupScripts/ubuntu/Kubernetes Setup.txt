@@ -1,0 +1,39 @@
+Ubuntu Kubernetes Server Setup
+
+Hyper-V Virtual Machine setup
+------------------------------
+Create HypberV boot drive using UbuntuMinImage-Docker.vhdx
+Memory Size = 4G Master
+Memory Size = 8G Node
+Virtual CPU = 2 Master
+Virtual CPU = 4 Nodehost
+
+OS Configuration
+-------------------
+Rename machine: sudo hostnamectl set-hostname "{hostname}"
+Update Network: IP4 set ip address, update DNS, fix NetMask 255.255.252.0
+								IP 6 Disable
+								Edit /etc/hosts - add cluster server IPs
+								Reboot server to ensure settings are updated
+								sudo apt-get update : This step validates DNS is working which is import for the install steps to complete succesfully.
+
+Install Kubernetes
+-------------------
+
+On master Server
+Get installation files: ftp cgroup, install_kube_master.sh
+chmod 770 install_kube_master.sh
+sudo ./install_kube_master.sh
+
+On success copy join script text display for use by node server
+
+On Node server: 
+Get installation files: ftp cgroup, install_kube_node.sh
+chmod 770 install_kube_node.sh
+sudo ./install_kube_node.sh
+
+Use join script from master to join cluster
+
+Verify Cluster Status on master server
+---------------------------------------
+Show Kubernetes nodes - kubectl get nodes

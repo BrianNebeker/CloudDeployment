@@ -8,4 +8,4 @@ kubectl get ingress ingress-app-demo -o jsonpath='{.status.loadBalancer.ingress[
 url="http://$(<ingressip)"
 printf "\nOutput from URL $url \n"
 curl $url
-printf "n\n"
+printf "\n\n"

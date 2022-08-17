@@ -19,3 +19,6 @@ spec:
         image: briannebeker.azurecr.io/demo-azure:latest
         ports:
         - containerPort: 8080
+        env:
+          - name: BUILD
+            value "%BUILD"

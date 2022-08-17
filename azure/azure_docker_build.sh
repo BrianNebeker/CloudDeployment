@@ -6,8 +6,8 @@ az acr login --name briannebeker
 mkdir -p azbuild
 cp ./Docker/* ./azbuild/
 cp ./Node/* ./azbuild/
-docker build -t DemoAzure ./azbuild
+docker build -t demo-azure ./azbuild
 
 # Push to Azure repo
-docker tag DemoAzure:latest briannebeker.azurecr.io/DemoAzure
-docker push briannebeker.azurecr.io/DemoAzure:latest
+docker tag demo-azure:latest briannebeker.azurecr.io/demo-azure
+docker push briannebeker.azurecr.io/demo-azure:latest

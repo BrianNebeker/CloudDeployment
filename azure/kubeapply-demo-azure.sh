@@ -6,8 +6,10 @@ az aks get-credentials --resource-group dev_group --name dev
 kubectl apply -f ./deploy/azure/demo-azure.yaml
 
 # Check deployment rollout status every 10 seconds (max 10 minutes) until complete.
+printf "\nWaiting rollout of application\n"
+
 ATTEMPTS=0
-ROLLOUT_STATUS_CMD="kubectl rollout status deployment/myapp -n namespace"
+ROLLOUT_STATUS_CMD="kubectl rollout status deployment/app-demo"
 until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 60 ]; do
   $ROLLOUT_STATUS_CMD
   ATTEMPTS=$((attempts + 1))

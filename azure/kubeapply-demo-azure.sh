@@ -12,7 +12,7 @@ ATTEMPTS=0
 ROLLOUT_STATUS_CMD="kubectl rollout status deployment/app-demo -w --timeout=10s"
 until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 30 ]; do
   $ROLLOUT_STATUS_CMD
-  ATTEMPTS=$((attempts + 1))
+  ATTEMPTS=$((ATTEMPTS + 1))
   sleep 10
 done
 

@@ -17,6 +17,7 @@ until $ROLLOUT_STATUS_CMD || [ $ATTEMPTS -eq 30 ]; do
 done
 
 kubectl get all
+kubectl get ingress
 
 # Get the ingress public IP and hit the application to verify the deployment
 kubectl get ingress ingress-app-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}' > ingressip

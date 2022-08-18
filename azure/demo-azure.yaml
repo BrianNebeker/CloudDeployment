@@ -17,6 +17,7 @@ spec:
       containers:
       - name: webapp
         image: briannebeker.azurecr.io/demo-azure:latest
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
         env:
